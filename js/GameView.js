@@ -14,9 +14,14 @@ export default class GameView {
             
             // tile.textContent = game.board[i];
             tile.innerHTML = `<span class="${tileType}">${game.board[i] ? game.board[i] : ""}</span>`
-
+            console.log(game)
             if (winningCombination && winningCombination.includes(i)) {
                 tile.classList.add("tile-winner");
+                let win = document.querySelector(".game-winner")
+                win.style.setProperty("display", "flex")
+                win.innerHTML = `
+                    Player ${game.turn} is the winner
+                `
             }
         }
     }

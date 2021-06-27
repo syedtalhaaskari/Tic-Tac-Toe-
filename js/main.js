@@ -8,6 +8,10 @@ document.querySelector(".restart").addEventListener("click", () => {
     onRestartClick()
 })
 
+document.querySelector(".play").addEventListener("click", () => {
+    onPlayClick()
+})
+
 let tiles = document.querySelectorAll(".board-tile");
 tiles.forEach(tile => {
     tile.addEventListener("click", () => {
@@ -23,6 +27,13 @@ function onTileClick(i) {
 function onRestartClick() {
     game = new Game();
     gameView.updateBoard(game)
+    document.querySelector(".choose-color").style.setProperty("display", "flex");
+    document.querySelector(".game").style.setProperty("display", "none");
+}
+
+function onPlayClick() {
+    document.querySelector(".choose-color").style.setProperty("display", "none");
+    document.querySelector(".game").style.setProperty("display", "flex");
 }
 
 gameView.updateBoard(game);

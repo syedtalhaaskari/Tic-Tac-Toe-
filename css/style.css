@@ -1,3 +1,11 @@
+:root {
+    --theme-color: #4c6986;
+    --theme-bg-color: white;
+    --theme-border-color: #4c6986;
+    --player-x-color: #42BED7;
+    --player-o-color: #D7BAFB;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +14,8 @@
 
 body {
     font-family: sans-serif;
-    color: #4c6986;
+    color: var(--theme-color);
+    background-color: var(--theme-bg-color);
 }
 
 .title {
@@ -28,27 +37,129 @@ h1 {
     font-weight: bold;
 }
 
-.restart {
+.restart, .play {
     width: 175px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    border: 2px solid #4c6986;
+    border: 2px solid var(--theme-border-color);
     cursor: pointer;
     transition: all .2s ease;
     font-weight: bold;
     margin-top: 30px;
 }
 
-.restart:hover {
-    background-color: #4c6986;
-    color: white;
+.play {
+    margin-top: 0;
+}
+
+.restart:hover, .play:hover {
+    background-color: var(--theme-color);
+    color: var(--theme-bg-color);
+}
+
+.left .toggle-container {
+    display: flex;
+    align-items: center;
+    max-width: fit-content;
+    margin-top: 30px;
+}
+
+.left .toggle-container span {
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: 1px solid var(--theme-border-color);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--theme-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--theme-bg-color);
+    border: 1px solid white;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.right .choose-color {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    color: var(--theme-color);
+    font-size: 30px;
+}
+
+.choose-color .color-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.choose-color .color-container input {
+    width: 100%;
+}
+
+.choose-color .color-container img {
+    display: none;
 }
 
 .game {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 500px;
     height: 500px;
@@ -62,24 +173,24 @@ h1 {
 
 .header .player-X {
     flex: 1;
-    border-bottom: 5px solid #eee;
+    border-bottom: 5px solid #ccc;
     padding-bottom: 8px;
 }
 
 .player-X.active {
-    color: #42BED7;
-    border-color: #42BED7;
+    color: var(--player-x-color);
+    border-color: var(--player-x-color);
 }
 
 .header .player-O {
     flex: 1;
-    border-bottom: 5px solid #eee;
+    border-bottom: 5px solid #ccc;
     padding-bottom: 8px;
 }
 
 .player-O.active {
-    color: #D7BAFB;
-    border-color: #D7BAFB;
+    color: var(--player-o-color);
+    border-color: var(--player-o-color);
 }
 
 .board {
@@ -96,16 +207,16 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 80px;
-    background-color: white;
+    background-color: var(--theme-bg-color);
     cursor: pointer;
 }
 
 .board-tile:not(:nth-child(3n)) {
-    border-right: 3px solid rgba(137, 163, 189, 0.58);
+    border-right: 3px solid var(--theme-border-color);
 }
 
 .board-tile:not(:nth-last-child(-n + 3)) {
-    border-bottom: 3px solid rgba(137, 163, 189, 0.58);
+    border-bottom: 3px solid var(--theme-border-color);
 }
 
 .board-tile:hover {
@@ -113,15 +224,22 @@ h1 {
 }
 
 .tile-x {
-    color: #42BED7;
+    color: var(--player-x-color);
 }
 
 .tile-o {
-    color: #D7BAFB;
+    color: var(--player-o-color);
 }
 
 .tile-winner span{
     color: #23CE6B;
+}
+
+.game-winner {
+    display: none;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 40px;
 }
 
 @media only screen and (max-width: 1200px) {

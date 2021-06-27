@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div class="wrapper">
         <div class="left">
@@ -19,8 +21,34 @@
             <div class="restart">
                 Start a New Game
             </div>
+            <div class="toggle-container">
+                <span>
+                    Light/Dark Mode
+                </span>
+                <label class="switch">
+                    <input type="checkbox" id="colorMode" onChange="toggleMode()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </div>
         <div class="right">
+            <div class="choose-color">
+                <div class="color-container">
+                    <label for="player-x-color">Select Player X Color: </label>
+                    <div>
+                        <input type="color" id="player-x-color" name="player-x-color" value="#42BED7" onchange="changeColorX(this.value)">
+                    </div>
+                </div>
+                <div class="color-container">
+                    <label for="player-o-color">Select Player O Color: </label>
+                    <div>
+                        <input type="color" id="player-o-color" name="player-o-color" value="#D7BAFB" onchange="changeColorO(this.value)">
+                    </div>
+                </div>
+                <div class="play">
+                    PLAY
+                </div>
+            </div>
             <div class="game">
                 <div class="header">
                     <div class="player-X">
@@ -41,10 +69,15 @@
                     <div class="board-tile" data-index="7"></div>
                     <div class="board-tile" data-index="8"></div>
                 </div>
+                <div class="game-winner">
+                    
+                </div>
             </div>
         </div>
     </div>
 
     <script src="./js/main.js" type="module"></script>
+    <script src="./js/app.js"></script>
 </body>
+
 </html>
